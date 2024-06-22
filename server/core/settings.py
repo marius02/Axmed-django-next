@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Axmed_2',
+        'NAME': 'Axmed_1',
         'USER': 'Ranger',
         'PASSWORD': 'mypassword'
     }
