@@ -10,6 +10,7 @@ import {
 } from "@/app/utils/products";
 import {
   Button,
+  Tooltip,
   Form,
   Input,
   Popconfirm,
@@ -231,24 +232,26 @@ const Dashboard: React.FC = () => {
                   </Popconfirm>
                 </span>
               ) : (
-                <Typography.Link
-                  disabled={editingKey !== ""}
-                  onClick={() => edit(record)}
-                >
-                  <CreditCardOutlined className="yellow-600 mr-2" />
-                  {/* Edit */}
-                </Typography.Link>
+                <Tooltip title="Edit">
+                  <Typography.Link
+                    disabled={editingKey !== ""}
+                    onClick={() => edit(record)}
+                  >
+                    <CreditCardOutlined className="yellow-600 mr-2" />
+                  </Typography.Link>
+                </Tooltip>
               )}
             </div>
             {!editable && (
-              <Popconfirm
-                title="Sure to delete?"
-                disabled={editingKey !== ""}
-                onConfirm={() => handleDelete(record.key)}
-              >
-                <DeleteOutlined />
-                {/* <a>Delete</a> */}
-              </Popconfirm>
+              <Tooltip title="Delete">
+                <Popconfirm
+                  title="Sure to delete?"
+                  disabled={editingKey !== ""}
+                  onConfirm={() => handleDelete(record.key)}
+                >
+                  <DeleteOutlined />
+                </Popconfirm>
+              </Tooltip>
             )}
           </div>
         );
@@ -293,10 +296,12 @@ const Dashboard: React.FC = () => {
 
   return (
     <Form form={form} component={false}>
-      <Button onClick={add} type="primary" style={{ marginBottom: 16 }}>
-        Add
-        <PlusOutlined />
-      </Button>
+      <Tooltip title="Add a new Product">
+        <Button onClick={add} type="primary" style={{ marginBottom: 16 }}>
+          Add
+          <PlusOutlined />
+        </Button>
+      </Tooltip>
       <Table
         components={{
           body: {
