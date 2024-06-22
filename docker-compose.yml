@@ -1,0 +1,22 @@
+version: '3'
+services:
+  django:
+    build:
+      context: ./server
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  nextjs:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: Axmed_2
+      POSTGRES_USER: Ranger
+      POSTGRES_PASSWORD: mypassword
